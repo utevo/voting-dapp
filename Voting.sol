@@ -10,7 +10,7 @@ contract Voting {
         candidates = candidates_;
     }
 
-    function readVotes(bytes32 candidate) public returns (uint256) {
+    function readVotes(bytes32 candidate) public view returns (uint256) {
         require(isCandidateValid(candidate));
         return votes[candidate];
     }
@@ -20,8 +20,8 @@ contract Voting {
         votes[candidate] += 1;
     }
 
-    function isCandidateValid(bytes32 candidate) view public returns (bool) {
-        for (uint i = 0; i < candidates.lenght; ++i) {
+    function isCandidateValid(bytes32 candidate) public view returns (bool) {
+        for (uint i = 0; i < candidates.length; ++i) {
             if (candidates[i] == candidate) {
                 return true;
             }
